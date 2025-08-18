@@ -1,0 +1,8 @@
+scripts:
+  echo:
+    name: "Display name"
+    run: echo "Hello world"
+  echo_two_line:
+    run: |
+      echo "First Line"
+      echo "Second line"

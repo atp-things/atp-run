@@ -1,0 +1,28 @@
+scripts:
+  echo:
+    name: "Display name"
+    run: echo "Hello world"
+
+  echo_two_line:
+    run: |
+      echo "First Line"
+      echo "Second line"
+
+  echo_env_var:
+    env_var:
+      ENV_VAR_TEST: "Hello world"
+    run: echo "$ENV_VAR_TEST"
+
+  echo_env_var_from_files:
+    env_files:
+      - .env
+      - .env.dev
+    run: echo "$ENV_VAR_TEST"
+
+  echo_env_var_from_env_group:
+    dot_env_group: "development"
+    run: echo "$ENV_VAR_TEST"
+
+  load_python_env:
+    env_path_python: ".venv/bin/python"
+    run: echo "$ENV_VAR_TEST"

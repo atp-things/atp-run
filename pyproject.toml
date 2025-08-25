@@ -7,8 +7,9 @@ enabled = true
 
 [project]
 name = "atprun"
-version = "0.1.0"
-description = "Add your description here"
+dynamic = ["version"]
+authors = [{ name = "Andraz Polak", email = "andrazpolak@gmail.com" }]
+description = "Run commands, scripts and import environmental variables"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -35,10 +36,7 @@ dev = [
     "setuptools-git-versioning>=2.1.0",
     "twine>=6.1.0",
 ]
-test = [
-    "pytest>=8.4.1",
-    "pytest-xdist>=3.8.0",
-]
+test = ["pytest>=8.4.1", "pytest-xdist>=3.8.0"]
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -43,5 +43,5 @@ jobs:
         with:
           files: ./dist/*.tar.gz
           generate_release_notes: True
-      # - name: Publish_package
-      #   uses: pypa/gh-action-pypi-publish@release/v1
+      - name: Publish_package
+        uses: pypa/gh-action-pypi-publish@release/v1

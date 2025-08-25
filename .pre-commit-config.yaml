@@ -9,16 +9,12 @@ repos:
       - id: check-merge-conflict
       - id: check-symlinks
       - id: requirements-txt-fixer
-  - repo: https://github.com/kynan/nbstripout
-    rev: 0.8.1
-    hooks:
-      - id: nbstripout
   - repo: https://gitlab.com/bmares/check-json5
     rev: v1.0.0
     hooks:
       - id: check-json5
   - repo: https://github.com/charliermarsh/ruff-pre-commit
-    rev: v0.12.9
+    rev: v0.12.10
     hooks:
       - id: ruff-check
         args:

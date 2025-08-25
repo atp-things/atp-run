@@ -26,3 +26,8 @@ scripts:
   load_python_env:
     env_path_python: ".venv/bin/python"
     run: echo "$ENV_VAR_TEST"
+
+  echo_env_var_from_env_group_uv_group:
+    dot_env_group: "development"
+    uv_group: "dev"
+    run: echo "$ENV_VAR_TEST"

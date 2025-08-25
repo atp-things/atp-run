@@ -6,7 +6,7 @@ scripts:
   echo_two_line:
     run: |
       echo "First Line"
-      echo "Second line"
+      echo "Second Line"
 
   echo_env_var:
     env_var:

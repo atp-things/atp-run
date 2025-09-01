@@ -29,6 +29,9 @@ homepage = 'https://github.com/atp-things/atp-run'
 repository = 'https://github.com/atp-things/atp-run'
 PyPI = "https://pypi.org/project/atprun/"
 
+[project.scripts]
+atprun = "src.atprun.__main__:main"
+
 [dependency-groups]
 dev = [
     "build>=1.3.0",

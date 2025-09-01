@@ -30,7 +30,7 @@ repository = 'https://github.com/atp-things/atp-run'
 PyPI = "https://pypi.org/project/atprun/"
 
 [project.scripts]
-atprun = "src.atprun.__main__:main"
+atprun = "src.atprun.main:app"
 
 [dependency-groups]
 dev = [

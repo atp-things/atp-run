@@ -18,9 +18,25 @@ You can also install ATP-Run using the `uv tool`, which is a tool to install and
 uv tool install atprun
 ```
 
+### pip
+
+You can also install ATP-Run using pip:
+
+```bash
+pip install atprun
+```
+
+### Pipenv
+
+You can also install ATP-Run using Pipenv:
+
+```bash
+pipenv install atprun
+```
+
 ## Usage
 
-Define your scripts in a YAML configuration file (e.g., `.atprun.yml`) and use the `atprun` command to run them.
+Define your scripts in a YAML configuration file (e.g., `atprun.yml`) and use the `atprun` command to run them.
 
 ```yaml
 scripts:

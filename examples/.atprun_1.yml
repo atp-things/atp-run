@@ -31,3 +31,8 @@ scripts:
     dot_env_group: "development"
     uv_group: "dev"
     run: echo "$ENV_VAR_TEST"
+
+pipeline:
+  pipeline_series_1:
+    - echo
+    - echo_two_line

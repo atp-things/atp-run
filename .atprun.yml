@@ -6,3 +6,8 @@ scripts:
     run: |
       echo "First Line"
       echo "Second line"
+
+  ping:
+    run: |
+      ping -c 2 8.8.8.8
+      ping -c 2 google.com

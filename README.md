@@ -14,6 +14,10 @@ pipx install atprun
 
 You can also install ATP-Run using the `uv tool`, which is a tool to install and run Python applications in isolated environments.
 
+```bash
+uv tool install atprun
+```
+
 ## Usage
 
 Define your scripts in a YAML configuration file (e.g., `.atprun.yml`) and use the `atprun` command to run them.

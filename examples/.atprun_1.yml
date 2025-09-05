@@ -3,10 +3,10 @@ scripts:
     name: "Display name"
     run: echo "Hello world"
 
-  echo_two_line:
+  echo_two_line2:
     run: |
       echo "First Line"
-      echo "Second Line"
+      echo "Second Line 2"
 
   echo_env_var:
     env_var:
@@ -32,7 +32,7 @@ scripts:
     uv_group: "dev"
     run: echo "$ENV_VAR_TEST"
 
-pipeline:
+pipelines:
   pipeline_series_1:
     - echo
     - echo_two_line

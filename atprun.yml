@@ -2,6 +2,7 @@ scripts:
   echo:
     name: "Display name"
     run: echo "Hello world"
+    # run: ""
   echo_two_line:
     run: |
       echo "First Line"

@@ -4,10 +4,10 @@ from pprint import pprint
 
 import typer
 
-from .configuration import AtpRunMain
+from .app_main import AtpRunMain
 
 app: typer.Typer = typer.Typer()
-atprunconfig: AtpRunMain = AtpRunMain()
+atp_run: AtpRunMain = AtpRunMain()
 
 
 @app.callback()
@@ -20,11 +20,8 @@ def callback(
     """
     AtpRun
     """
-    print("callback", "Start")
-    print("config_path", config_path)
     # load config file
-    atprunconfig.load_configuration(path=config_path)
-    print("callback", "End")
+    atp_run.load_configuration(path=config_path)
     pass
 
 
@@ -36,7 +33,7 @@ def script(
     Run script
     """
     try:
-        atprunconfig.script_run(name=name)
+        atp_run.script_run(name=name)
     except ValueError as err:
         typer.secho(
             f"Error: {err}",

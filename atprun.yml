@@ -1,7 +1,10 @@
 scripts:
   echo:
     name: "Display name"
-    run: echo "Hello world"
+    run: echo "$ENV_VAR_TEST_2"
+    env_var:
+      ENV_VAR_TEST_1: "Hello world 1"
+      ENV_VAR_TEST_2: "Hello world 2"
     # run: ""
   echo_two_line:
     run: |

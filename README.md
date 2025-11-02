@@ -47,7 +47,7 @@ Example: `atprun script my_script`
 
 ### 2.1. Examples `atprun.yml`
 
-Simple script
+#### Simple script
 
 ```yaml
 scripts:
@@ -55,7 +55,7 @@ scripts:
     run: "echo Hello, World!"
 ```
 
-Multiple line script
+#### Multiple line script
 
 ```yaml
 scripts:
@@ -65,14 +65,27 @@ scripts:
       echo "Second line"
 ```
 
-Define environment variables
+#### Set environment variables
 
 ```yaml
 scripts:
   my_script:
-    env_var:
+    environment:
       ENV_VAR_TEST: "Hello world 1"
     run: echo "$ENV_VAR_TEST"
+```
+
+#### Load environment variables from .env file
+
+```yaml
+scripts:
+  my_script:
+    env_file:
+      - ".env"
+      - ".env.development"
+    run: |
+      echo "$DOTENV_TEST_1"
+      echo "$DOTENV_DEV_TEST_1"
 ```
 
 ## 3. Settings

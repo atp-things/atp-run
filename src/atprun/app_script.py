@@ -6,13 +6,10 @@ from pydantic import BaseModel
 
 
 class AtpRunScriptConfig(BaseModel):
-    run: str  # TODO: validate len(run) > 0
-    name: str | None = None
-    # description: str | None = None
+    run: str
     environment: dict[str, str] | None = None
     env_file: list[str] | None = None
-    # dot_env_group: str | None = None
-    # uv_group
+    dotenv_group: str | None = None
 
 
 def _export_env_var_from_file(file_path: str) -> None:
@@ -51,6 +48,21 @@ class AtpRunScript:
                 _export_env_var_from_file(file)
         return None
 
+    def _export_env_var_from_dotenv_group(self) -> None:
+        if self.script.dotenv_group is None or len(self.script.dotenv_group) == 0:
+            return None
+
+        dotenv_files: list[str] = [
+            ".env",
+            ".env.local",
+            f".env.{self.script.dotenv_group}",
+            f".env.{self.script.dotenv_group}.local",
+        ]
+
+        for file in dotenv_files:
+            _export_env_var_from_file(file)
+        return None
+
     def _command_run(self) -> None:
         command: str = self.script.run
         if len(command) <= 0:
@@ -61,7 +73,26 @@ class AtpRunScript:
         )
         return None
 
+    def _script_validate(self) -> None:
+        # `run` - validation
+        if len(self.script.run) == 0:
+            raise ValueError("Script 'run' cannot be empty")
+
+        # dotenv_group can not be empty string
+        if self.script.dotenv_group is not None and len(self.script.dotenv_group) == 0:
+            raise ValueError("If 'dotenv_group' is set, it cannot be an empty string")
+
+        # Coexistence validation
+        if self.script.env_file is not None and self.script.dotenv_group is not None:
+            raise ValueError(
+                "Cannot use both 'env_file' and 'dotenv_group' in the same script"
+            )
+
+        return None
+
     def run(self) -> None:
+        self._script_validate()
+        self._export_env_var_from_dotenv_group()
         self._export_env_var_from_files()
         self._export_env_var()
         self._command_run()

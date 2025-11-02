@@ -29,3 +29,14 @@ scripts:
       echo "dotenv DOTENV_DEV_LOCAL_TEST_1 - $DOTENV_DEV_LOCAL_TEST_1"
       echo "dotenv DOTENV_PROD_TEST_1 - $DOTENV_PROD_TEST_1"
       echo "dotenv DOTENV_PROD_LOCAL_TEST_1 - $DOTENV_PROD_LOCAL_TEST_1"
+
+  dotenv_group_test:
+    dotenv_group: "production"
+    run: |
+      echo "dotenv load files"
+      echo "dotenv DOTENV_TEST_1 - $DOTENV_TEST_1"
+      echo "dotenv DOTENV_LOCAL_TEST_1 - $DOTENV_LOCAL_TEST_1"
+      echo "dotenv DOTENV_DEV_TEST_1 - $DOTENV_DEV_TEST_1"
+      echo "dotenv DOTENV_DEV_LOCAL_TEST_1 - $DOTENV_DEV_LOCAL_TEST_1"
+      echo "dotenv DOTENV_PROD_TEST_1 - $DOTENV_PROD_TEST_1"
+      echo "dotenv DOTENV_PROD_LOCAL_TEST_1 - $DOTENV_PROD_LOCAL_TEST_1"

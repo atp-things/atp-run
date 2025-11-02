@@ -9,7 +9,7 @@ scripts:
       echo "Second Line 2"
 
   echo_env_var:
-    env_var:
+    environment:
       ENV_VAR_TEST: "Hello world"
     run: echo "$ENV_VAR_TEST"
 

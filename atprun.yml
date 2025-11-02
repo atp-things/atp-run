@@ -1,11 +1,10 @@
 scripts:
   echo:
-    name: "Display name"
-    run: echo "$ENV_VAR_TEST_2"
-    env_var:
+    environment:
       ENV_VAR_TEST_1: "Hello world 1"
       ENV_VAR_TEST_2: "Hello world 2"
-    # run: ""
+    run: echo "Envvar 1 - $ENV_VAR_TEST_1"
+
   echo_two_line:
     run: |
       echo "First Line"
@@ -15,3 +14,18 @@ scripts:
     run: |
       ping -c 2 8.8.8.8
       ping -c 2 google.com
+
+  dotenv_files:
+    env_file:
+      - ".env"
+      - ".env.local"
+      - ".env.production"
+      - ".env.production.local"
+    run: |
+      echo "dotenv load files"
+      echo "dotenv DOTENV_TEST_1 - $DOTENV_TEST_1"
+      echo "dotenv DOTENV_LOCAL_TEST_1 - $DOTENV_LOCAL_TEST_1"
+      echo "dotenv DOTENV_DEV_TEST_1 - $DOTENV_DEV_TEST_1"
+      echo "dotenv DOTENV_DEV_LOCAL_TEST_1 - $DOTENV_DEV_LOCAL_TEST_1"
+      echo "dotenv DOTENV_PROD_TEST_1 - $DOTENV_PROD_TEST_1"
+      echo "dotenv DOTENV_PROD_LOCAL_TEST_1 - $DOTENV_PROD_LOCAL_TEST_1"

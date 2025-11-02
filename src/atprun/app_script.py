@@ -1,3 +1,4 @@
+import logging
 import os
 import subprocess
 
@@ -8,10 +9,23 @@ class AtpRunScriptConfig(BaseModel):
     run: str  # TODO: validate len(run) > 0
     name: str | None = None
     # description: str | None = None
-    env_var: dict[str, str] | None = None
-    # env_files: list[str] | None = None
+    environment: dict[str, str] | None = None
+    env_file: list[str] | None = None
     # dot_env_group: str | None = None
     # uv_group
+
+
+def _export_env_var_from_file(file_path: str) -> None:
+    if not os.path.exists(file_path):
+        logging.warning(f"Env file '{file_path}' does not exist.")
+        return None
+
+    with open(file_path) as f:
+        for line in f:
+            key, _, value = line.partition("=")
+            os.environ[key] = value
+
+    return None
 
 
 class AtpRunScript:
@@ -21,9 +35,15 @@ class AtpRunScript:
         return None
 
     def _export_env_var(self) -> None:
-        if self.script.env_var is not None:
-            for key, value in self.script.env_var.items():
+        if self.script.environment is not None:
+            for key, value in self.script.environment.items():
                 os.environ[key] = value
+        return None
+
+    def _export_env_var_from_files(self) -> None:
+        if self.script.env_file is not None:
+            for file in self.script.env_file:
+                _export_env_var_from_file(file)
         return None
 
     def _command_run(self) -> None:
@@ -37,6 +57,7 @@ class AtpRunScript:
         return None
 
     def run(self) -> None:
+        self._export_env_var_from_files()
         self._export_env_var()
         self._command_run()
 

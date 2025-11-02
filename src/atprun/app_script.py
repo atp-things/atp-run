@@ -22,8 +22,13 @@ def _export_env_var_from_file(file_path: str) -> None:
 
     with open(file_path) as f:
         for line in f:
+            # if line is empty or a comment, skip
+            line = line.strip()
+            if len(line) == 0 or line.startswith("#"):
+                continue
             key, _, value = line.partition("=")
-            os.environ[key] = value
+            if len(key) > 0 and len(value) > 0:
+                os.environ[key] = value
 
     return None
 

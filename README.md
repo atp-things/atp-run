@@ -88,6 +88,26 @@ scripts:
       echo "$DOTENV_DEV_TEST_1"
 ```
 
+#### Load environment variables from multiple .env files with dotenv groups
+
+Load environment variables from multiple `.env` files based on the specified dotenv group. List of files from which to load environment variables:
+
+- `.env`
+- `.env.local`
+- `.env.<dotenv_group>`
+- `.env.<dotenv_group>.local`
+
+```yaml
+scripts:
+  my_script:
+    dotenv_group: "production"
+    run: |
+      echo "$DOTENV_TEST_1"
+      echo "$DOTENV_LOCAL_TEST_1"
+      echo "$DOTENV_PROD_TEST_1"
+      echo "$DOTENV_PROD_LOCAL_TEST_1"
+```
+
 ## 3. Settings
 
 ### 3.1 Configuration File
